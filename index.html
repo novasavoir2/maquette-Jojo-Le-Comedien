@@ -1,0 +1,3633 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Jojo Le Comédien — Humoriste, comédien, vidéaste et créateur de contenus béninois. Découvrez ses vidéos, spectacles, actualités et réservez-le pour vos événements." />
+<meta name="theme-color" content="#090909" />
+<title>Jojo Le Comédien — Humoriste · Comédien · Créateur de contenus</title>
+
+<meta property="og:title" content="Jojo Le Comédien — Humoriste Béninois" />
+<meta property="og:description" content="L'humour. L'énergie. Le spectacle. Découvrez l'univers de Jojo Le Comédien." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   RESET & VARIABLES
+   ============================================================ */
+:root{
+  --black:#090909;
+  --black-2:#111111;
+  --black-3:#161616;
+  --off-white:#F5F5F0;
+  --white:#FFFFFF;
+  --gold:#F5B700;
+  --gold-light:#FFD34E;
+  --red:#E53935;
+  --grey:#8B8B8B;
+  --grey-2:#4a4a4a;
+
+  --font-display:'Anton', 'Bebas Neue', sans-serif;
+  --font-alt:'Bebas Neue', 'Anton', sans-serif;
+  --font-body:'Inter', system-ui, sans-serif;
+
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-2:cubic-bezier(.65,0,.35,1);
+  --radius:6px;
+  --max:1440px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font-body);
+  background:var(--black);
+  color:var(--off-white);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  cursor:none;
+}
+body.no-scroll{overflow:hidden}
+body.menu-open{overflow:hidden}
+
+img{max-width:100%;display:block;user-select:none}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font-family:inherit;cursor:none;border:none;background:none;color:inherit}
+input,textarea,select{font-family:inherit;cursor:none}
+
+::selection{background:var(--gold);color:var(--black)}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--grey-2);border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+
+/* ============================================================
+   TYPOGRAPHIE
+   ============================================================ */
+.display{
+  font-family:var(--font-display);
+  font-weight:400;
+  letter-spacing:.01em;
+  line-height:.85;
+  text-transform:uppercase;
+}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:.9;text-transform:uppercase;letter-spacing:.01em}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  font-family:var(--font-body);
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.42em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.eyebrow::before{
+  content:'';
+  width:44px;height:1px;background:var(--gold);
+}
+
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+.container{
+  width:100%;
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 clamp(20px, 4vw, 60px);
+}
+.section{
+  padding:clamp(90px, 11vw, 160px) 0;
+  position:relative;
+}
+
+/* ============================================================
+   CUSTOM CURSOR
+   ============================================================ */
+.cursor-dot,
+.cursor-ring{
+  position:fixed;
+  top:0;left:0;
+  pointer-events:none;
+  z-index:99999;
+  transform:translate(-50%,-50%);
+  transition:opacity .3s;
+  will-change:transform;
+}
+.cursor-dot{
+  width:6px;height:6px;
+  background:var(--gold);
+  border-radius:50%;
+  transition:transform .12s var(--ease), background .3s, width .3s, height .3s;
+}
+.cursor-ring{
+  width:38px;height:38px;
+  border:1.5px solid rgba(245,183,0,.55);
+  border-radius:50%;
+  transition:transform .28s var(--ease), width .35s var(--ease), height .35s var(--ease), background .35s, border-color .35s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.cursor-ring .cursor-label{
+  font-family:var(--font-body);
+  font-size:.55rem;
+  font-weight:700;
+  letter-spacing:.15em;
+  color:var(--black);
+  opacity:0;
+  transition:opacity .25s;
+  text-transform:uppercase;
+}
+.cursor-hover .cursor-dot{transform:translate(-50%,-50%) scale(0)}
+.cursor-hover .cursor-ring{
+  width:80px;height:80px;
+  background:var(--gold);
+  border-color:var(--gold);
+}
+.cursor-hover .cursor-ring .cursor-label{opacity:1}
+.cursor-link .cursor-ring{
+  width:60px;height:60px;
+  border-color:var(--gold);
+  background:rgba(245,183,0,.12);
+}
+.cursor-media .cursor-ring{
+  width:100px;height:100px;
+  background:var(--gold);
+  border-color:var(--gold);
+}
+.cursor-media .cursor-ring .cursor-label{opacity:1}
+
+@media (hover:none), (pointer:coarse){
+  .cursor-dot,.cursor-ring{display:none!important}
+  body,button,input,textarea,select,a{cursor:auto!important}
+}
+
+/* ============================================================
+   PRELOADER
+   ============================================================ */
+.preloader{
+  position:fixed;
+  inset:0;
+  background:var(--black);
+  z-index:100000;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  transition:opacity .8s var(--ease), visibility .8s;
+}
+.preloader.done{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+.preloader-inner{
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+.preloader-title{
+  font-family:var(--font-display);
+  font-size:clamp(3rem, 12vw, 9rem);
+  color:var(--off-white);
+  line-height:.9;
+  letter-spacing:.02em;
+  display:flex;
+  justify-content:center;
+  overflow:hidden;
+}
+.preloader-title span{
+  display:inline-block;
+  transform:translateY(110%);
+  opacity:0;
+  animation:letterUp .9s var(--ease) forwards;
+}
+.preloader-title span:nth-child(1){animation-delay:.05s}
+.preloader-title span:nth-child(2){animation-delay:.12s}
+.preloader-title span:nth-child(3){animation-delay:.19s}
+.preloader-title span:nth-child(4){animation-delay:.26s}
+@keyframes letterUp{
+  to{transform:translateY(0);opacity:1}
+}
+.preloader-sub{
+  font-family:var(--font-alt);
+  font-size:clamp(1rem, 3.2vw, 2.2rem);
+  letter-spacing:.4em;
+  color:var(--gold);
+  margin-top:12px;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeUp .8s var(--ease) 0.9s forwards;
+  padding-left:.4em;
+}
+@keyframes fadeUp{
+  to{opacity:1;transform:translateY(0)}
+}
+.preloader-bar{
+  width:min(260px, 60vw);
+  height:2px;
+  background:rgba(245,245,240,.1);
+  margin-top:44px;
+  position:relative;
+  overflow:hidden;
+  border-radius:2px;
+}
+.preloader-bar::after{
+  content:'';
+  position:absolute;
+  top:0;left:0;height:100%;
+  width:0%;
+  background:linear-gradient(90deg, var(--gold), var(--gold-light));
+  transition:width .3s linear;
+  box-shadow:0 0 14px rgba(245,183,0,.65);
+}
+.preloader-count{
+  font-family:var(--font-alt);
+  font-size:.9rem;
+  letter-spacing:.4em;
+  color:var(--grey);
+  margin-top:18px;
+}
+.preloader-count span{color:var(--gold)}
+.preloader-glow{
+  position:absolute;
+  width:520px;height:520px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(245,183,0,.22) 0%, rgba(245,183,0,0) 70%);
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  animation:glowPulse 3s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes glowPulse{
+  0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.7}
+  50%{transform:translate(-50%,-50%) scale(1.15);opacity:1}
+}
+
+/* ============================================================
+   HEADER / NAV
+   ============================================================ */
+.header{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:9000;
+  padding:22px 0;
+  transition:padding .4s var(--ease), background .4s var(--ease), backdrop-filter .4s;
+  border-bottom:1px solid transparent;
+}
+.header.scrolled{
+  padding:12px 0;
+  background:rgba(9,9,9,.82);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(245,183,0,.14);
+}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+.logo{
+  display:flex;
+  flex-direction:column;
+  line-height:1;
+  font-family:var(--font-display);
+  font-size:1.4rem;
+  color:var(--off-white);
+  letter-spacing:.02em;
+  position:relative;
+}
+.logo .logo-main{
+  color:var(--off-white);
+  display:flex;
+  overflow:hidden;
+}
+.logo .logo-main span{
+  display:inline-block;
+  animation:logoIn .7s var(--ease) both;
+}
+.logo .logo-main span:nth-child(1){animation-delay:.1s}
+.logo .logo-main span:nth-child(2){animation-delay:.16s}
+.logo .logo-main span:nth-child(3){animation-delay:.22s}
+.logo .logo-main span:nth-child(4){animation-delay:.28s}
+@keyframes logoIn{
+  from{transform:translateY(100%);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+.logo .logo-sub{
+  font-family:var(--font-alt);
+  font-size:.62rem;
+  letter-spacing:.5em;
+  color:var(--gold);
+  margin-top:2px;
+  padding-left:.15em;
+}
+.logo-line{
+  position:absolute;
+  bottom:-3px;left:0;
+  height:2px;width:0;
+  background:var(--gold);
+  transition:width .5s var(--ease);
+}
+.header.scrolled .logo-line,
+.logo:hover .logo-line{width:100%}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:34px;
+}
+.nav-links a{
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--off-white);
+  position:relative;
+  padding:6px 0;
+  transition:color .3s;
+}
+.nav-links a::after{
+  content:'';
+  position:absolute;
+  left:0;bottom:0;
+  width:0;height:1.5px;
+  background:var(--gold);
+  transition:width .35s var(--ease);
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding:16px 32px;
+  font-family:var(--font-body);
+  font-size:.76rem;
+  font-weight:700;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  border-radius:2px;
+  position:relative;
+  overflow:hidden;
+  transition:transform .35s var(--ease), color .35s, box-shadow .35s;
+  white-space:nowrap;
+}
+.btn span{position:relative;z-index:2;display:inline-flex;align-items:center;gap:10px}
+.btn::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:var(--gold);
+  transform:translateY(101%);
+  transition:transform .45s var(--ease);
+  z-index:1;
+}
+.btn:hover::before{transform:translateY(0)}
+.btn:hover{color:var(--black)}
+.btn-primary{
+  background:var(--gold);
+  color:var(--black);
+  box-shadow:0 12px 30px -12px rgba(245,183,0,.6);
+}
+.btn-primary::before{background:var(--off-white)}
+.btn-primary:hover{box-shadow:0 18px 40px -12px rgba(245,183,0,.85)}
+.btn-ghost{
+  background:transparent;
+  color:var(--off-white);
+  border:1.5px solid rgba(245,245,240,.3);
+}
+.btn-ghost:hover{color:var(--black);border-color:var(--gold)}
+
+.btn .arrow{transition:transform .35s var(--ease)}
+.btn:hover .arrow{transform:translateX(5px)}
+
+/* Hamburger */
+.burger{
+  display:none;
+  flex-direction:column;
+  gap:6px;
+  padding:10px;
+  z-index:9500;
+  position:relative;
+}
+.burger span{
+  width:28px;height:2px;
+  background:var(--off-white);
+  transition:transform .4s var(--ease), opacity .3s, background .3s;
+  display:block;
+}
+.burger.open span{background:var(--gold)}
+.burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+/* Mobile menu */
+.mobile-menu{
+  position:fixed;
+  inset:0;
+  background:var(--black);
+  z-index:9400;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:100px 8vw 60px;
+  clip-path:circle(0% at 92% 6%);
+  transition:clip-path .8s var(--ease-2);
+  pointer-events:none;
+}
+.mobile-menu.open{
+  clip-path:circle(150% at 92% 6%);
+  pointer-events:auto;
+}
+.mobile-menu::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(245,183,0,.08), transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(229,57,53,.06), transparent 55%);
+  pointer-events:none;
+}
+.mobile-menu nav{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  position:relative;
+  z-index:2;
+  max-width:520px;
+  width:100%;
+  margin:0 auto;
+}
+.mobile-menu a{
+  font-family:var(--font-display);
+  font-size:clamp(2rem, 9vw, 3.4rem);
+  color:var(--off-white);
+  padding:8px 0;
+  display:flex;
+  align-items:baseline;
+  gap:16px;
+  border-bottom:1px solid rgba(245,245,240,.08);
+  opacity:0;
+  transform:translateX(-40px);
+  transition:opacity .5s var(--ease), transform .5s var(--ease), color .3s;
+}
+.mobile-menu.open a{
+  opacity:1;
+  transform:translateX(0);
+}
+.mobile-menu.open a:nth-child(1){transition-delay:.3s}
+.mobile-menu.open a:nth-child(2){transition-delay:.37s}
+.mobile-menu.open a:nth-child(3){transition-delay:.44s}
+.mobile-menu.open a:nth-child(4){transition-delay:.51s}
+.mobile-menu.open a:nth-child(5){transition-delay:.58s}
+.mobile-menu.open a:nth-child(6){transition-delay:.65s}
+.mobile-menu.open a:nth-child(7){transition-delay:.72s}
+.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu a .num{
+  font-family:var(--font-alt);
+  font-size:.75rem;
+  letter-spacing:.3em;
+  color:var(--gold);
+  opacity:.7;
+}
+.mobile-menu .mobile-meta{
+  position:relative;
+  z-index:2;
+  max-width:520px;
+  width:100%;
+  margin:40px auto 0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:22px;
+  font-size:.75rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--grey);
+}
+.mobile-menu .mobile-meta a{color:var(--grey);border:none;font-family:var(--font-body);font-size:.75rem;padding:0}
+.mobile-menu .mobile-meta a:hover{color:var(--gold)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  padding:140px 0 80px;
+  background:var(--black);
+}
+.hero-bg-text{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-family:var(--font-display);
+  font-size:clamp(18rem, 42vw, 46rem);
+  color:rgba(245,245,240,.022);
+  white-space:nowrap;
+  letter-spacing:-.03em;
+  pointer-events:none;
+  user-select:none;
+  line-height:.8;
+  z-index:0;
+  will-change:transform;
+}
+.hero-glow{
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  filter:blur(80px);
+  z-index:0;
+}
+.hero-glow.g1{
+  width:520px;height:520px;
+  background:rgba(245,183,0,.12);
+  top:-120px;right:-120px;
+  animation:floatY 12s ease-in-out infinite;
+}
+.hero-glow.g2{
+  width:420px;height:420px;
+  background:rgba(229,57,53,.09);
+  bottom:-140px;left:-100px;
+  animation:floatY 15s ease-in-out infinite reverse;
+}
+@keyframes floatY{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-30px)}
+}
+
+.hero-grid{
+  position:relative;
+  z-index:3;
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  gap:60px;
+  align-items:center;
+  width:100%;
+}
+.hero-content{max-width:680px}
+
+.hero-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:8px 16px;
+  border:1px solid rgba(245,183,0,.35);
+  border-radius:100px;
+  font-size:.68rem;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:26px;
+  background:rgba(245,183,0,.05);
+}
+.hero-tag .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 10px var(--gold);
+  animation:dotPulse 1.8s ease-in-out infinite;
+}
+@keyframes dotPulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.4;transform:scale(.7)}
+}
+
+.hero-title{
+  font-size:clamp(3.4rem, 10vw, 8.4rem);
+  color:var(--off-white);
+  line-height:.86;
+  margin-bottom:12px;
+}
+.hero-title .line{
+  display:block;
+  overflow:hidden;
+}
+.hero-title .line > span{
+  display:inline-block;
+  transform:translateY(105%);
+  transition:transform 1s var(--ease);
+}
+.hero-ready .hero-title .line > span{transform:translateY(0)}
+.hero-title .line:nth-child(1) > span{transition-delay:.15s}
+.hero-title .line:nth-child(2) > span{transition-delay:.28s}
+.hero-title .accent{color:var(--gold)}
+
+.hero-sub{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 22px;
+  margin:28px 0 26px;
+  font-family:var(--font-alt);
+  font-size:clamp(1rem, 2vw, 1.5rem);
+  letter-spacing:.24em;
+  color:var(--off-white);
+  text-transform:uppercase;
+}
+.hero-sub span{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .7s var(--ease), transform .7s var(--ease);
+}
+.hero-ready .hero-sub span{opacity:1;transform:translateY(0)}
+.hero-ready .hero-sub span:nth-child(1){transition-delay:.6s}
+.hero-ready .hero-sub span:nth-child(2){transition-delay:.72s}
+.hero-ready .hero-sub span:nth-child(3){transition-delay:.84s}
+.hero-sub span:not(:last-child)::after{
+  content:'';
+  width:5px;height:5px;
+  background:var(--gold);
+  border-radius:50%;
+  display:inline-block;
+}
+
+.hero-desc{
+  color:rgba(245,245,240,.72);
+  font-size:1.02rem;
+  max-width:520px;
+  margin-bottom:38px;
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .8s var(--ease) .95s, transform .8s var(--ease) .95s;
+}
+.hero-ready .hero-desc{opacity:1;transform:translateY(0)}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .8s var(--ease) 1.1s, transform .8s var(--ease) 1.1s;
+}
+.hero-ready .hero-actions{opacity:1;transform:translateY(0)}
+
+.hero-visual{
+  position:relative;
+  aspect-ratio:4/5;
+  max-width:520px;
+  margin-left:auto;
+  width:100%;
+}
+.hero-visual-mask{
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  border-radius:4px;
+  clip-path:inset(100% 0 0 0);
+  transition:clip-path 1.4s var(--ease) .3s;
+}
+.hero-ready .hero-visual-mask{clip-path:inset(0 0 0 0)}
+.hero-visual-mask img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:contrast(1.05) saturate(.95);
+  transform:scale(1.08);
+  transition:transform 8s var(--ease);
+  will-change:transform;
+}
+.hero-ready .hero-visual-mask img{transform:scale(1)}
+
+.hero-visual::before{
+  content:'';
+  position:absolute;
+  inset:-14px -14px 14px 14px;
+  border:1.5px solid rgba(245,183,0,.4);
+  z-index:-1;
+  border-radius:4px;
+  transition:inset .6s var(--ease);
+}
+.hero-visual:hover::before{inset:-8px -8px 8px 8px}
+
+.hero-badge{
+  position:absolute;
+  bottom:-24px;left:-24px;
+  background:var(--gold);
+  color:var(--black);
+  padding:20px 26px;
+  border-radius:2px;
+  font-family:var(--font-alt);
+  line-height:1;
+  box-shadow:0 20px 40px -14px rgba(245,183,0,.5);
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .8s var(--ease) 1.35s, transform .8s var(--ease) 1.35s;
+  z-index:4;
+}
+.hero-ready .hero-badge{opacity:1;transform:translateY(0)}
+.hero-badge strong{
+  font-size:2rem;
+  display:block;
+  letter-spacing:.01em;
+}
+.hero-badge span{
+  font-size:.62rem;
+  letter-spacing:.34em;
+  font-family:var(--font-body);
+  font-weight:700;
+  text-transform:uppercase;
+  opacity:.7;
+}
+
+.scroll-hint{
+  position:absolute;
+  bottom:34px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  font-size:.62rem;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  color:var(--grey);
+  z-index:4;
+  opacity:0;
+  transition:opacity 1s var(--ease) 1.6s;
+}
+.hero-ready .scroll-hint{opacity:1}
+.scroll-hint .line-anim{
+  width:1px;height:50px;
+  background:linear-gradient(to bottom, var(--gold), transparent);
+  animation:scrollDown 2s ease-in-out infinite;
+}
+@keyframes scrollDown{
+  0%{transform:scaleY(0);transform-origin:top}
+  50%{transform:scaleY(1);transform-origin:top}
+  51%{transform-origin:bottom}
+  100%{transform:scaleY(0);transform-origin:bottom}
+}
+
+/* ============================================================
+   SECTION HEADER (générique)
+   ============================================================ */
+.section-head{
+  position:relative;
+  margin-bottom:clamp(50px, 7vw, 90px);
+  z-index:2;
+}
+.section-head.center{text-align:center}
+.section-head.center .eyebrow{justify-content:center}
+.section-num{
+  position:absolute;
+  top:-30px;
+  right:0;
+  font-family:var(--font-display);
+  font-size:clamp(6rem, 16vw, 13rem);
+  color:rgba(245,245,240,.035);
+  line-height:.8;
+  pointer-events:none;
+  user-select:none;
+  z-index:0;
+}
+.section-title{
+  font-size:clamp(2.2rem, 6.4vw, 5.2rem);
+  color:var(--off-white);
+  margin-top:18px;
+  position:relative;
+  z-index:2;
+}
+.section-title .accent{color:var(--gold)}
+.section-lead{
+  max-width:620px;
+  color:rgba(245,245,240,.66);
+  margin-top:22px;
+  font-size:1rem;
+  position:relative;
+  z-index:2;
+}
+.section-head.center .section-lead{margin-left:auto;margin-right:auto}
+
+/* ============================================================
+   REVEAL ANIMATIONS
+   ============================================================ */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .9s var(--ease), transform .9s var(--ease);
+  will-change:opacity, transform;
+}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-left{transform:translateX(-60px)}
+.reveal-left.in{transform:translateX(0)}
+.reveal-right{transform:translateX(60px)}
+.reveal-right.in{transform:translateX(0)}
+.reveal-scale{transform:scale(.92);opacity:0}
+.reveal-scale.in{transform:scale(1);opacity:1}
+.reveal-clip{
+  clip-path:inset(0 0 100% 0);
+  opacity:1;
+  transform:none;
+  transition:clip-path 1.1s var(--ease);
+}
+.reveal-clip.in{clip-path:inset(0 0 0 0)}
+
+.d1{transition-delay:.08s}
+.d2{transition-delay:.16s}
+.d3{transition-delay:.24s}
+.d4{transition-delay:.32s}
+.d5{transition-delay:.4s}
+.d6{transition-delay:.48s}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about{
+  background:var(--black-2);
+  position:relative;
+  overflow:hidden;
+}
+.about::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 80% 10%, rgba(245,183,0,.06), transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(229,57,53,.05), transparent 45%);
+  pointer-events:none;
+}
+.about-grid{
+  display:grid;
+  grid-template-columns:.95fr 1.05fr;
+  gap:clamp(40px, 6vw, 90px);
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+.about-photo{
+  position:relative;
+  aspect-ratio:4/5;
+}
+.about-photo-frame{
+  position:relative;
+  overflow:hidden;
+  border-radius:4px;
+  height:100%;
+  clip-path:inset(0 0 0 0);
+}
+.about-photo-frame img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.6s var(--ease);
+}
+.about-photo:hover .about-photo-frame img{transform:scale(1.05)}
+.about-photo::before{
+  content:'';
+  position:absolute;
+  top:-16px;left:-16px;
+  width:60%;height:60%;
+  border-top:2px solid var(--gold);
+  border-left:2px solid var(--gold);
+  z-index:3;
+  pointer-events:none;
+  transition:all .6s var(--ease);
+}
+.about-photo::after{
+  content:'';
+  position:absolute;
+  bottom:-16px;right:-16px;
+  width:60%;height:60%;
+  border-bottom:2px solid var(--gold);
+  border-right:2px solid var(--gold);
+  z-index:3;
+  pointer-events:none;
+  transition:all .6s var(--ease);
+}
+.about-photo:hover::before,
+.about-photo:hover::after{width:72%;height:72%}
+
+.about-text .role-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 14px;
+  margin:24px 0 30px;
+}
+.about-text .role-list span{
+  padding:7px 16px;
+  border:1px solid rgba(245,183,0,.3);
+  border-radius:100px;
+  font-size:.7rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:600;
+}
+.about-text p{
+  color:rgba(245,245,240,.72);
+  margin-bottom:16px;
+  font-size:1.02rem;
+  max-width:560px;
+}
+.about-text p.lead{
+  color:var(--off-white);
+  font-size:1.15rem;
+  font-family:var(--font-alt);
+  letter-spacing:.03em;
+  line-height:1.5;
+}
+
+.about-stats{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+  margin-top:44px;
+  padding-top:36px;
+  border-top:1px solid rgba(245,245,240,.1);
+}
+.stat strong{
+  display:block;
+  font-family:var(--font-display);
+  font-size:clamp(2rem, 4.5vw, 3.4rem);
+  color:var(--gold);
+  line-height:1;
+}
+.stat span{
+  display:block;
+  font-size:.66rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--grey);
+  margin-top:8px;
+  font-weight:600;
+}
+
+/* Timeline */
+.timeline{
+  margin-top:clamp(70px, 10vw, 130px);
+  position:relative;
+  z-index:2;
+  padding-top:60px;
+  border-top:1px solid rgba(245,245,240,.08);
+}
+.timeline-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+  gap:30px;
+  margin-top:50px;
+  position:relative;
+}
+.timeline-item{
+  position:relative;
+  padding-top:34px;
+}
+.timeline-item::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:12px;height:12px;
+  border-radius:50%;
+  background:var(--black-2);
+  border:2px solid var(--gold);
+  transition:background .3s, transform .3s;
+}
+.timeline-item::after{
+  content:'';
+  position:absolute;
+  top:5px;left:14px;
+  width:calc(100% + 30px);
+  height:1.5px;
+  background:rgba(245,183,0,.18);
+}
+.timeline-item:last-child::after{display:none}
+.timeline-item:hover::before{background:var(--gold);transform:scale(1.2)}
+.timeline-item .year{
+  font-family:var(--font-display);
+  font-size:1.6rem;
+  color:var(--gold);
+  line-height:1;
+  margin-bottom:10px;
+}
+.timeline-item h4{
+  font-family:var(--font-body);
+  font-size:.86rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  color:var(--off-white);
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.timeline-item p{
+  font-size:.85rem;
+  color:var(--grey);
+  line-height:1.6;
+}
+
+/* ============================================================
+   VIDEOS
+   ============================================================ */
+.videos{
+  background:var(--black);
+  position:relative;
+  overflow:hidden;
+}
+.videos::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(245,183,0,.5), transparent);
+}
+.videos-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:50px;
+}
+.filter-btn{
+  padding:11px 22px;
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--grey);
+  border:1px solid rgba(245,245,240,.14);
+  border-radius:100px;
+  transition:color .3s, border-color .3s, background .3s;
+}
+.filter-btn:hover{color:var(--off-white);border-color:rgba(245,245,240,.4)}
+.filter-btn.active{
+  color:var(--black);
+  background:var(--gold);
+  border-color:var(--gold);
+}
+
+.video-featured{
+  display:grid;
+  grid-template-columns:1.5fr 1fr;
+  gap:50px;
+  align-items:center;
+  margin-bottom:70px;
+  padding-bottom:70px;
+  border-bottom:1px solid rgba(245,245,240,.08);
+  position:relative;
+  z-index:2;
+}
+.video-featured .cover{
+  position:relative;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  border-radius:4px;
+  cursor:none;
+}
+.video-featured .cover img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.4s var(--ease);
+}
+.video-featured .cover:hover img{transform:scale(1.06)}
+.video-featured .cover::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.55));
+  transition:opacity .4s;
+}
+.video-featured .cover:hover::after{opacity:.8}
+.play-circle{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:82px;height:82px;
+  border-radius:50%;
+  background:rgba(245,183,0,.92);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:3;
+  transition:transform .4s var(--ease), background .3s;
+  pointer-events:none;
+}
+.video-featured .cover:hover .play-circle{transform:translate(-50%,-50%) scale(1.1)}
+.play-circle svg{width:26px;height:26px;fill:var(--black);margin-left:4px}
+
+.video-featured .info h3{
+  font-size:clamp(1.6rem, 3.4vw, 2.6rem);
+  color:var(--off-white);
+  margin:16px 0 18px;
+}
+.video-featured .info p{
+  color:rgba(245,245,240,.65);
+  margin-bottom:28px;
+  max-width:460px;
+}
+.category-tag{
+  display:inline-block;
+  font-size:.66rem;
+  font-weight:700;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--gold);
+  padding:6px 14px;
+  border:1px solid rgba(245,183,0,.4);
+  border-radius:100px;
+}
+
+.videos-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+  gap:24px;
+  position:relative;
+  z-index:2;
+}
+.video-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:4px;
+  background:var(--black-2);
+  transition:transform .5s var(--ease), opacity .4s;
+  cursor:none;
+}
+.video-card.hidden{
+  opacity:0;
+  transform:scale(.9);
+  pointer-events:none;
+  position:absolute;
+  visibility:hidden;
+}
+.video-card .thumb{
+  position:relative;
+  aspect-ratio:16/9;
+  overflow:hidden;
+}
+.video-card .thumb img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.1s var(--ease);
+}
+.video-card:hover .thumb img{transform:scale(1.08)}
+.video-card .thumb::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 30%, rgba(0,0,0,.85) 100%);
+  opacity:.7;
+  transition:opacity .4s;
+}
+.video-card:hover .thumb::after{opacity:1}
+.video-card .play-btn{
+  position:absolute;
+  top:16px;right:16px;
+  width:44px;height:44px;
+  border-radius:50%;
+  background:rgba(245,183,0,.92);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;
+  transform:translateY(-10px);
+  transition:opacity .4s var(--ease), transform .4s var(--ease);
+  z-index:3;
+  pointer-events:none;
+}
+.video-card:hover .play-btn{opacity:1;transform:translateY(0)}
+.video-card .play-btn svg{width:14px;height:14px;fill:var(--black);margin-left:2px}
+
+.video-card .meta{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:22px 22px 20px;
+  z-index:3;
+  transition:transform .45s var(--ease);
+}
+.video-card:hover .meta{transform:translateY(-6px)}
+.video-card .meta .cat{
+  font-size:.62rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:700;
+  margin-bottom:8px;
+  display:block;
+}
+.video-card .meta h4{
+  font-family:var(--font-alt);
+  font-size:1.15rem;
+  letter-spacing:.02em;
+  color:var(--off-white);
+  line-height:1.15;
+  text-transform:uppercase;
+}
+
+/* ============================================================
+   SPECTACLES
+   ============================================================ */
+.shows{
+  background:var(--black-2);
+  position:relative;
+  overflow:hidden;
+}
+.shows::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 15% 20%, rgba(229,57,53,.08), transparent 50%);
+  pointer-events:none;
+}
+
+.countdown{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:14px;
+  margin:0 0 70px;
+  padding:36px;
+  border:1px solid rgba(245,183,0,.25);
+  border-radius:4px;
+  background:linear-gradient(135deg, rgba(245,183,0,.05), rgba(9,9,9,.4));
+  position:relative;
+  z-index:2;
+  max-width:760px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.countdown .cd-unit{
+  text-align:center;
+  position:relative;
+}
+.countdown .cd-unit:not(:last-child)::after{
+  content:'';
+  position:absolute;
+  right:-7px;top:20%;
+  height:60%;
+  width:1px;
+  background:rgba(245,183,0,.2);
+}
+.countdown .num{
+  font-family:var(--font-display);
+  font-size:clamp(2rem, 6vw, 3.6rem);
+  color:var(--gold);
+  line-height:1;
+  display:block;
+}
+.countdown .lbl{
+  font-size:.6rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--grey);
+  font-weight:700;
+  margin-top:10px;
+}
+.countdown-head{
+  text-align:center;
+  margin-bottom:36px;
+  position:relative;
+  z-index:2;
+}
+.countdown-head .eyebrow{justify-content:center;color:var(--red)}
+.countdown-head .eyebrow::before{background:var(--red)}
+.countdown-head h3{
+  font-size:clamp(1.4rem, 3vw, 2.2rem);
+  color:var(--off-white);
+  margin-top:14px;
+}
+
+.shows-list{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  position:relative;
+  z-index:2;
+}
+.show-item{
+  display:grid;
+  grid-template-columns:120px 2fr 1.3fr 1.3fr auto;
+  gap:30px;
+  align-items:center;
+  padding:34px 0;
+  border-bottom:1px solid rgba(245,245,240,.08);
+  transition:padding .4s var(--ease), background .4s;
+  position:relative;
+}
+.show-item:hover{
+  padding-left:16px;
+  background:linear-gradient(90deg, rgba(245,183,0,.04), transparent);
+}
+.show-item:first-child{border-top:1px solid rgba(245,245,240,.08)}
+.show-date{
+  font-family:var(--font-display);
+  font-size:1.5rem;
+  color:var(--gold);
+  line-height:1;
+}
+.show-date span{
+  display:block;
+  font-family:var(--font-body);
+  font-size:.62rem;
+  letter-spacing:.3em;
+  color:var(--grey);
+  margin-top:6px;
+  font-weight:700;
+}
+.show-name{
+  font-family:var(--font-alt);
+  font-size:1.5rem;
+  letter-spacing:.02em;
+  color:var(--off-white);
+  text-transform:uppercase;
+  line-height:1.1;
+}
+.show-venue,
+.show-city{
+  font-size:.86rem;
+  color:rgba(245,245,240,.6);
+}
+.show-venue strong{display:block;color:var(--grey);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;margin-bottom:6px;font-weight:700}
+.show-item .btn{padding:12px 22px;font-size:.68rem}
+.show-tag{
+  font-size:.6rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  padding:4px 10px;
+  border-radius:100px;
+  font-weight:700;
+  display:inline-block;
+  margin-bottom:8px;
+}
+.show-tag.past{background:rgba(139,139,139,.15);color:var(--grey)}
+.show-tag.future{background:rgba(245,183,0,.15);color:var(--gold)}
+
+/* ============================================================
+   GALERIE
+   ============================================================ */
+.gallery{
+  background:var(--black);
+  position:relative;
+}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(12, 1fr);
+  grid-auto-rows:110px;
+  gap:14px;
+  position:relative;
+  z-index:2;
+}
+.gallery-item{
+  position:relative;
+  overflow:hidden;
+  border-radius:4px;
+  cursor:none;
+  transition:transform .5s var(--ease);
+}
+.gallery-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.4s var(--ease);
+}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.75));
+  opacity:0;
+  transition:opacity .45s var(--ease);
+}
+.gallery-item:hover::after{opacity:1}
+.gallery-item .caption{
+  position:absolute;
+  bottom:18px;left:18px;
+  z-index:3;
+  font-family:var(--font-alt);
+  font-size:.9rem;
+  letter-spacing:.16em;
+  color:var(--off-white);
+  text-transform:uppercase;
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity .4s var(--ease), transform .4s var(--ease);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.gallery-item .caption::before{
+  content:'';
+  width:20px;height:1px;background:var(--gold);
+}
+.gallery-item:hover .caption{opacity:1;transform:translateY(0)}
+
+.g-a{grid-column:span 6;grid-row:span 4}
+.g-b{grid-column:span 3;grid-row:span 2}
+.g-c{grid-column:span 3;grid-row:span 2}
+.g-d{grid-column:span 3;grid-row:span 3}
+.g-e{grid-column:span 3;grid-row:span 3}
+.g-f{grid-column:span 6;grid-row:span 3}
+
+/* ============================================================
+   ACTUALITÉS
+   ============================================================ */
+.news{
+  background:var(--black-2);
+  position:relative;
+}
+.news-grid{
+  display:grid;
+  grid-template-columns:1.2fr 1fr 1fr;
+  gap:26px;
+  position:relative;
+  z-index:2;
+}
+.news-card{
+  background:var(--black-3);
+  border-radius:4px;
+  overflow:hidden;
+  transition:transform .5s var(--ease), box-shadow .5s;
+  cursor:none;
+  display:flex;
+  flex-direction:column;
+}
+.news-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 60px -30px rgba(245,183,0,.25);
+}
+.news-card .cover{
+  aspect-ratio:16/10;
+  overflow:hidden;
+}
+.news-card .cover img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.4s var(--ease);
+}
+.news-card:hover .cover img{transform:scale(1.07)}
+.news-card .body{
+  padding:26px 26px 30px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+.news-meta{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:.66rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--grey);
+  font-weight:700;
+  margin-bottom:14px;
+}
+.news-meta .cat{color:var(--gold)}
+.news-meta .dot{width:4px;height:4px;background:var(--grey);border-radius:50%}
+.news-card h3{
+  font-family:var(--font-alt);
+  font-size:1.3rem;
+  letter-spacing:.02em;
+  color:var(--off-white);
+  text-transform:uppercase;
+  line-height:1.2;
+  margin-bottom:14px;
+}
+.news-card p{
+  font-size:.9rem;
+  color:rgba(245,245,240,.6);
+  line-height:1.6;
+  flex:1;
+}
+.news-card .read-more{
+  margin-top:20px;
+  font-size:.68rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:var(--gold);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  transition:gap .3s;
+}
+.news-card:hover .read-more{gap:16px}
+
+.news-card.featured{
+  grid-row:span 2;
+}
+.news-card.featured .cover{aspect-ratio:16/12}
+
+.news-cta{
+  text-align:center;
+  margin-top:60px;
+  position:relative;
+  z-index:2;
+}
+
+/* ============================================================
+   COLLABORATIONS
+   ============================================================ */
+.brands{
+  background:var(--black);
+  position:relative;
+  padding:90px 0;
+  border-top:1px solid rgba(245,245,240,.06);
+  border-bottom:1px solid rgba(245,245,240,.06);
+  overflow:hidden;
+}
+.brands-head{
+  text-align:center;
+  margin-bottom:50px;
+}
+.brands-head h3{
+  font-family:var(--font-alt);
+  font-size:1.15rem;
+  letter-spacing:.34em;
+  color:var(--grey);
+  text-transform:uppercase;
+  margin-top:14px;
+}
+.marquee{
+  display:flex;
+  overflow:hidden;
+  gap:60px;
+  mask-image:linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image:linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.marquee-track{
+  display:flex;
+  gap:60px;
+  flex-shrink:0;
+  animation:marquee 32s linear infinite;
+}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes marquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.marquee-item{
+  font-family:var(--font-display);
+  font-size:clamp(1.4rem, 3vw, 2.4rem);
+  color:rgba(245,245,240,.28);
+  white-space:nowrap;
+  letter-spacing:.05em;
+  transition:color .3s;
+  padding:10px 0;
+}
+.marquee-item:hover{color:var(--gold)}
+
+/* ============================================================
+   SOCIAL
+   ============================================================ */
+.social{
+  background:var(--black-2);
+  position:relative;
+  overflow:hidden;
+}
+.social::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 90% 10%, rgba(245,183,0,.07), transparent 45%);
+  pointer-events:none;
+}
+.social-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:20px;
+  position:relative;
+  z-index:2;
+}
+.social-card{
+  padding:38px 30px;
+  border:1px solid rgba(245,245,240,.12);
+  border-radius:4px;
+  background:linear-gradient(180deg, rgba(245,245,240,.02), rgba(245,245,240,0));
+  position:relative;
+  overflow:hidden;
+  transition:transform .5s var(--ease), border-color .4s, background .4s;
+  cursor:none;
+  min-height:230px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.social-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:3px;
+  background:var(--gold);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .5s var(--ease);
+}
+.social-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(245,183,0,.5);
+  background:linear-gradient(180deg, rgba(245,183,0,.05), rgba(245,245,240,0));
+}
+.social-card:hover::before{transform:scaleX(1)}
+.social-card .icon{
+  width:52px;height:52px;
+  border-radius:12px;
+  background:rgba(245,183,0,.1);
+  color:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:22px;
+  transition:background .3s, color .3s, transform .5s var(--ease);
+}
+.social-card:hover .icon{background:var(--gold);color:var(--black);transform:rotate(-6deg) scale(1.05)}
+.social-card .icon svg{width:26px;height:26px;fill:currentColor}
+.social-card h4{
+  font-family:var(--font-alt);
+  font-size:1.3rem;
+  letter-spacing:.06em;
+  color:var(--off-white);
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.social-card p{
+  font-size:.85rem;
+  color:var(--grey);
+  line-height:1.5;
+}
+.social-card .arrow{
+  margin-top:18px;
+  font-size:1.1rem;
+  color:var(--gold);
+  transition:transform .4s var(--ease);
+}
+.social-card:hover .arrow{transform:translateX(8px)}
+
+/* ============================================================
+   BOOKING
+   ============================================================ */
+.booking{
+  position:relative;
+  overflow:hidden;
+  padding:clamp(100px, 12vw, 160px) 0;
+  background:
+    linear-gradient(135deg, rgba(9,9,9,.95), rgba(17,17,17,.92)),
+    url('a.jpeg') center/cover no-repeat;
+}
+.booking::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 20% 80%, rgba(245,183,0,.1), transparent 50%);
+  pointer-events:none;
+}
+.booking-grid{
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:70px;
+  align-items:start;
+  position:relative;
+  z-index:2;
+}
+.booking-title{
+  font-size:clamp(2.4rem, 6.4vw, 5rem);
+  color:var(--off-white);
+  line-height:.9;
+}
+.booking-title .accent{color:var(--gold)}
+.booking-services{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 14px;
+  margin:28px 0 34px;
+}
+.booking-services span{
+  font-family:var(--font-alt);
+  font-size:.82rem;
+  letter-spacing:.16em;
+  color:rgba(245,245,240,.72);
+  padding:6px 14px;
+  border:1px solid rgba(245,245,240,.18);
+  border-radius:100px;
+  text-transform:uppercase;
+  transition:color .3s, border-color .3s, background .3s;
+}
+.booking-services span:hover{color:var(--gold);border-color:var(--gold);background:rgba(245,183,0,.06)}
+
+.booking-info{
+  margin-top:30px;
+  padding-top:30px;
+  border-top:1px solid rgba(245,245,240,.12);
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.booking-info .row{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  font-size:.9rem;
+  color:rgba(245,245,240,.7);
+}
+.booking-info .row strong{
+  color:var(--gold);
+  font-size:.68rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  min-width:100px;
+  padding-top:2px;
+}
+
+form.booking-form{
+  background:rgba(9,9,9,.6);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(245,245,240,.12);
+  border-radius:4px;
+  padding:clamp(28px, 4vw, 44px);
+}
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.field{
+  margin-bottom:18px;
+  position:relative;
+}
+.field label{
+  display:block;
+  font-size:.66rem;
+  font-weight:700;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--grey);
+  margin-bottom:10px;
+}
+.field label .req{color:var(--red)}
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  padding:14px 16px;
+  background:rgba(245,245,240,.04);
+  border:1px solid rgba(245,245,240,.14);
+  border-radius:2px;
+  color:var(--off-white);
+  font-size:.95rem;
+  transition:border-color .3s, background .3s, box-shadow .3s;
+  font-family:inherit;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  outline:none;
+  border-color:var(--gold);
+  background:rgba(245,183,0,.04);
+  box-shadow:0 0 0 4px rgba(245,183,0,.1);
+}
+.field textarea{resize:vertical;min-height:120px}
+.field.error input,
+.field.error select,
+.field.error textarea{border-color:var(--red)}
+.field .err-msg{
+  font-size:.72rem;
+  color:var(--red);
+  margin-top:6px;
+  display:none;
+  letter-spacing:.04em;
+}
+.field.error .err-msg{display:block}
+form.booking-form .btn{width:100%;margin-top:8px}
+
+.form-success{
+  display:none;
+  padding:18px 22px;
+  background:rgba(245,183,0,.1);
+  border:1px solid rgba(245,183,0,.4);
+  border-radius:2px;
+  color:var(--gold);
+  font-size:.88rem;
+  margin-top:16px;
+  text-align:center;
+  letter-spacing:.04em;
+}
+.form-success.show{display:block;animation:fadeUp .5s var(--ease)}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact{
+  background:var(--black-2);
+  padding:clamp(80px, 10vw, 130px) 0;
+}
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:30px;
+  position:relative;
+  z-index:2;
+}
+.contact-item{
+  padding:38px 32px;
+  border:1px solid rgba(245,245,240,.1);
+  border-radius:4px;
+  transition:border-color .3s, background .3s, transform .5s var(--ease);
+  position:relative;
+  overflow:hidden;
+}
+.contact-item:hover{
+  border-color:rgba(245,183,0,.4);
+  background:rgba(245,183,0,.03);
+  transform:translateY(-6px);
+}
+.contact-item .label{
+  font-size:.66rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:700;
+  margin-bottom:16px;
+  display:block;
+}
+.contact-item .value{
+  font-family:var(--font-alt);
+  font-size:1.3rem;
+  color:var(--off-white);
+  letter-spacing:.02em;
+  word-break:break-word;
+  transition:color .3s;
+}
+.contact-item:hover .value{color:var(--gold)}
+.contact-item .sub{
+  font-size:.82rem;
+  color:var(--grey);
+  margin-top:8px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{
+  background:var(--black);
+  padding:80px 0 30px;
+  border-top:1px solid rgba(245,245,240,.06);
+  position:relative;
+  overflow:hidden;
+}
+.footer-bg{
+  position:absolute;
+  bottom:-30px;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:var(--font-display);
+  font-size:clamp(8rem, 22vw, 22rem);
+  color:rgba(245,245,240,.028);
+  white-space:nowrap;
+  pointer-events:none;
+  user-select:none;
+  line-height:.8;
+  letter-spacing:-.02em;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1.2fr;
+  gap:50px;
+  margin-bottom:60px;
+  position:relative;
+  z-index:2;
+}
+.footer-brand .logo{margin-bottom:20px}
+.footer-brand p{
+  font-size:.9rem;
+  color:var(--grey);
+  max-width:340px;
+  line-height:1.7;
+}
+.footer-col h5{
+  font-family:var(--font-body);
+  font-size:.68rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:700;
+  margin-bottom:22px;
+}
+.footer-col a,
+.footer-col li{
+  display:block;
+  font-size:.88rem;
+  color:rgba(245,245,240,.62);
+  margin-bottom:10px;
+  transition:color .3s, padding-left .3s;
+}
+.footer-col a:hover{color:var(--gold);padding-left:6px}
+
+.footer-bottom{
+  border-top:1px solid rgba(245,245,240,.08);
+  padding-top:28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+  position:relative;
+  z-index:2;
+  font-size:.78rem;
+  color:var(--grey);
+  letter-spacing:.04em;
+}
+.footer-bottom .design a{
+  color:var(--gold);
+  transition:color .3s;
+}
+.footer-bottom .design a:hover{color:var(--gold-light)}
+
+/* ============================================================
+   WHATSAPP FLOAT
+   ============================================================ */
+.whatsapp-float{
+  position:fixed;
+  right:22px;bottom:22px;
+  width:58px;height:58px;
+  border-radius:50%;
+  background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 30px -10px rgba(37,211,102,.6);
+  z-index:9500;
+  transition:transform .35s var(--ease);
+  animation:pulseWA 2.6s ease-in-out infinite;
+}
+.whatsapp-float:hover{transform:scale(1.08)}
+.whatsapp-float svg{width:30px;height:30px;fill:white}
+.whatsapp-float .tooltip{
+  position:absolute;
+  right:72px;
+  top:50%;
+  transform:translateY(-50%) translateX(10px);
+  background:var(--black);
+  color:var(--off-white);
+  padding:8px 14px;
+  font-size:.72rem;
+  letter-spacing:.1em;
+  border-radius:4px;
+  border:1px solid rgba(245,183,0,.3);
+  white-space:nowrap;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s, transform .3s;
+}
+.whatsapp-float:hover .tooltip{opacity:1;transform:translateY(-50%) translateX(0)}
+@keyframes pulseWA{
+  0%,100%{box-shadow:0 14px 30px -10px rgba(37,211,102,.6), 0 0 0 0 rgba(37,211,102,.55)}
+  50%{box-shadow:0 14px 30px -10px rgba(37,211,102,.6), 0 0 0 18px rgba(37,211,102,0)}
+}
+
+/* To-top */
+.to-top{
+  position:fixed;
+  right:22px;bottom:92px;
+  width:46px;height:46px;
+  border-radius:50%;
+  background:var(--black-2);
+  color:var(--gold);
+  border:1px solid rgba(245,183,0,.4);
+  display:flex;align-items:center;justify-content:center;
+  z-index:9500;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s, transform .3s, background .3s;
+  font-size:1.1rem;
+}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{transform:translateY(-4px);background:var(--gold);color:var(--black)}
+
+/* ============================================================
+   VIDEO MODAL & LIGHTBOX
+   ============================================================ */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.94);
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .4s var(--ease), visibility .4s;
+  padding:30px;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+.modal.open{opacity:1;visibility:visible}
+.modal-inner{
+  position:relative;
+  width:100%;
+  max-width:1100px;
+  aspect-ratio:16/9;
+  transform:scale(.92);
+  transition:transform .5s var(--ease);
+}
+.modal.open .modal-inner{transform:scale(1)}
+.modal-inner iframe{
+  width:100%;height:100%;
+  border:none;
+  border-radius:4px;
+  background:black;
+}
+.modal-close{
+  position:absolute;
+  top:-50px;right:0;
+  width:40px;height:40px;
+  border-radius:50%;
+  background:rgba(245,245,240,.08);
+  color:var(--off-white);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;
+  transition:background .3s, transform .3s;
+  cursor:none;
+}
+.modal-close:hover{background:var(--red);transform:rotate(90deg)}
+
+/* Lightbox */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.96);
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .4s var(--ease), visibility .4s;
+  padding:60px 40px;
+}
+.lightbox.open{opacity:1;visibility:visible}
+.lightbox img{
+  max-width:100%;
+  max-height:82vh;
+  object-fit:contain;
+  border-radius:4px;
+  transform:scale(.94);
+  transition:transform .5s var(--ease);
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.9);
+}
+.lightbox.open img{transform:scale(1)}
+.lb-btn{
+  position:absolute;
+  width:52px;height:52px;
+  border-radius:50%;
+  background:rgba(245,245,240,.08);
+  color:var(--off-white);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;
+  transition:background .3s, transform .3s;
+  cursor:none;
+}
+.lb-btn:hover{background:var(--gold);color:var(--black)}
+.lb-prev{left:24px;top:50%;transform:translateY(-50%)}
+.lb-next{right:24px;top:50%;transform:translateY(-50%)}
+.lb-prev:hover{transform:translateY(-50%) translateX(-4px)}
+.lb-next:hover{transform:translateY(-50%) translateX(4px)}
+.lb-close{top:24px;right:24px}
+.lb-close:hover{transform:rotate(90deg)}
+.lb-counter{
+  position:absolute;
+  bottom:24px;left:50%;
+  transform:translateX(-50%);
+  font-family:var(--font-alt);
+  letter-spacing:.34em;
+  color:var(--grey);
+  font-size:.8rem;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1100px){
+  .hero-grid{grid-template-columns:1fr;gap:60px}
+  .hero-visual{margin:0 auto;max-width:420px}
+  .about-grid{grid-template-columns:1fr;gap:50px}
+  .about-photo{max-width:480px;margin:0 auto}
+  .video-featured{grid-template-columns:1fr;gap:30px}
+  .news-grid{grid-template-columns:1fr 1fr}
+  .news-card.featured{grid-row:auto;grid-column:span 2}
+  .social-grid{grid-template-columns:repeat(2,1fr)}
+  .booking-grid{grid-template-columns:1fr;gap:50px}
+  .contact-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+}
+
+@media (max-width:860px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .show-item{
+    grid-template-columns:100px 1fr;
+    gap:16px 24px;
+    padding:26px 0;
+  }
+  .show-venue,.show-city{grid-column:2}
+  .show-item .btn{grid-column:2;justify-self:start}
+  .gallery-grid{grid-template-columns:repeat(6, 1fr);grid-auto-rows:90px}
+  .g-a{grid-column:span 6;grid-row:span 3}
+  .g-b{grid-column:span 3;grid-row:span 2}
+  .g-c{grid-column:span 3;grid-row:span 2}
+  .g-d{grid-column:span 3;grid-row:span 3}
+  .g-e{grid-column:span 3;grid-row:span 3}
+  .g-f{grid-column:span 6;grid-row:span 3}
+}
+
+@media (max-width:640px){
+  .section{padding:70px 0}
+  .hero{padding:110px 0 60px}
+  .hero-title{font-size:clamp(2.8rem, 16vw, 5rem)}
+  .hero-sub{font-size:.95rem;letter-spacing:.18em;gap:8px 14px}
+  .hero-badge{padding:14px 18px;bottom:-16px;left:-16px}
+  .hero-badge strong{font-size:1.5rem}
+  .about-stats{grid-template-columns:1fr 1fr;gap:20px}
+  .countdown{padding:24px 16px;gap:8px}
+  .countdown .num{font-size:1.8rem}
+  .social-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:30px}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .form-row{grid-template-columns:1fr}
+  .modal{padding:20px}
+  .modal-close{top:-44px;right:-4px}
+  .lightbox{padding:80px 20px}
+  .lb-prev{left:10px}
+  .lb-next{right:10px}
+  .lb-btn{width:44px;height:44px}
+  .news-grid{grid-template-columns:1fr}
+  .news-card.featured{grid-column:auto}
+  .whatsapp-float{right:16px;bottom:16px;width:52px;height:52px}
+  .to-top{right:16px;bottom:80px;width:42px;height:42px}
+  .whatsapp-float .tooltip{display:none}
+}
+
+@media (max-width:400px){
+  .container{padding:0 18px}
+  .show-item{grid-template-columns:1fr;gap:10px}
+  .show-venue,.show-city,.show-item .btn{grid-column:auto}
+  .about-stats{grid-template-columns:1fr}
+}
+
+/* ============================================================
+   PREFERS-REDUCED-MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+  .hero-bg-text,.hero-glow{display:none}
+  .marquee-track{animation:none}
+}
+
+/* Masquer le préloader si JS désactivé après 3s */
+.no-js .preloader{display:none}
+</style>
+</head>
+<body>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader-glow"></div>
+  <div class="preloader-inner">
+    <div class="preloader-title" aria-label="Jojo">
+      <span>J</span><span>O</span><span>J</span><span>O</span>
+    </div>
+    <div class="preloader-sub">LE COMÉDIEN</div>
+    <div class="preloader-bar" id="preloaderBar"></div>
+    <div class="preloader-count"><span id="preloaderCount">00</span> %</div>
+  </div>
+</div>
+
+<!-- ============ CURSOR ============ -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing">
+  <span class="cursor-label" id="cursorLabel">Voir</span>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <div class="container nav">
+    <a href="#accueil" class="logo" aria-label="Jojo Le Comédien - Accueil">
+      <span class="logo-main"><span>J</span><span>O</span><span>J</span><span>O</span></span>
+      <span class="logo-sub">LE COMÉDIEN</span>
+      <span class="logo-line"></span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#accueil">Accueil</a>
+      <a href="#apropos">À propos</a>
+      <a href="#videos">Vidéos</a>
+      <a href="#spectacles">Spectacles</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#actualites">Actualités</a>
+    </nav>
+    <a href="#booking" class="btn btn-primary" data-cursor="hover">
+      <span>Booking <span class="arrow">→</span></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobileMenu">
+  <nav aria-label="Menu mobile">
+    <a href="#accueil"><span class="num">01</span> Accueil</a>
+    <a href="#apropos"><span class="num">02</span> À propos</a>
+    <a href="#videos"><span class="num">03</span> Vidéos</a>
+    <a href="#spectacles"><span class="num">04</span> Spectacles</a>
+    <a href="#galerie"><span class="num">05</span> Galerie</a>
+    <a href="#actualites"><span class="num">06</span> Actualités</a>
+    <a href="#booking"><span class="num">07</span> Booking</a>
+  </nav>
+  <div class="mobile-meta">
+    <a href="#contact">Contact</a>
+    <a href="#reseaux">Réseaux</a>
+    <span>Abomey · Bénin</span>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="accueil">
+  <div class="hero-bg-text" id="heroBgText">JOJO</div>
+  <div class="hero-glow g1"></div>
+  <div class="hero-glow g2"></div>
+
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="dot"></span>
+        Humoriste · Comédien · Bénin
+      </div>
+
+      <h1 class="hero-title">
+        <span class="line"><span>JOJO</span></span>
+        <span class="line"><span class="accent">LE COMÉDIEN</span></span>
+      </h1>
+
+      <div class="hero-sub">
+        <span>L'humour.</span>
+        <span>L'énergie.</span>
+        <span>Le spectacle.</span>
+      </div>
+
+      <p class="hero-desc">
+        Bienvenue dans l'univers de Jojo — humoriste, comédien, vidéaste et
+        créateur de contenus béninois. Un univers où le rire devient un langage,
+        où chaque sketch raconte une histoire, où chaque scène devient un souvenir.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#apropos" class="btn btn-primary" data-cursor="hover">
+          <span>Découvrir mon univers <span class="arrow">→</span></span>
+        </a>
+        <a href="#videos" class="btn btn-ghost" data-cursor="hover">
+          <span>Voir mes vidéos <span class="arrow">→</span></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual" id="heroVisual">
+      <div class="hero-visual-mask">
+        <img src="a.jpeg" alt="Portrait de Jojo Le Comédien" loading="eager" />
+      </div>
+      <div class="hero-badge">
+        <strong>10+</strong>
+        <span>Ans sur scène</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll to explore</span>
+    <span class="line-anim"></span>
+  </div>
+</section>
+
+<!-- ============ À PROPOS ============ -->
+<section class="section about" id="apropos">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <span class="eyebrow">À propos</span>
+      <h2 class="section-title reveal">QUI EST <span class="accent">JOJO</span> ?</h2>
+      <p class="section-lead reveal d1">
+        Un artiste aux multiples facettes qui fait rire, réfléchir et vibrer
+        des milliers de personnes à travers le Bénin et la diaspora.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-photo reveal-left">
+        <div class="about-photo-frame">
+          <img src="b.jpeg" alt="Jojo Le Comédien sur scène" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="about-text">
+        <div class="role-list reveal d1">
+          <span>Humoriste</span>
+          <span>Comédien</span>
+          <span>Vidéaste</span>
+          <span>Créateur de contenus</span>
+        </div>
+
+        <p class="lead reveal d2">
+          Jojo, c'est une voix unique dans le paysage humoristique béninois.
+        </p>
+        <p class="reveal d3">
+          À travers ses sketchs, ses spectacles et ses vidéos, il transforme
+          le quotidien en scènes drôles, touchantes et toujours justes.
+          Sa force ? Un regard aiguisé sur la société, un jeu d'acteur
+          généreux et une capacité rare à faire rire sans jamais blesser.
+        </p>
+        <p class="reveal d4">
+          Chaque création est un voyage : on rit, on se reconnaît, on partage.
+          Jojo ne se contente pas de faire rire, il raconte des histoires
+          qui rassemblent.
+        </p>
+
+        <div class="about-stats">
+          <div class="stat reveal d3">
+            <strong data-count="10" data-suffix="+">0</strong>
+            <span>Années de carrière</span>
+          </div>
+          <div class="stat reveal d4">
+            <strong data-count="100" data-suffix="+">0</strong>
+            <span>Spectacles & scènes</span>
+          </div>
+          <div class="stat reveal d5">
+            <strong data-count="1" data-suffix="M+">0</strong>
+            <span>Vues cumulées</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline">
+      <div class="section-head">
+        <span class="eyebrow">Parcours</span>
+        <h3 class="section-title reveal" style="font-size:clamp(1.6rem, 3.6vw, 2.6rem);">UNE <span class="accent">AVENTURE</span> HUMAINE</h3>
+      </div>
+      <div class="timeline-list">
+        <div class="timeline-item reveal d1">
+          <div class="year">2014</div>
+          <h4>Début de l'aventure</h4>
+          <p>Premiers pas sur scène et premières vidéos partagées.</p>
+        </div>
+        <div class="timeline-item reveal d2">
+          <div class="year">2016</div>
+          <h4>Création de contenus</h4>
+          <p>Développement d'un style unique mêlant sketch et narration.</p>
+        </div>
+        <div class="timeline-item reveal d3">
+          <div class="year">2018</div>
+          <h4>Réseaux sociaux</h4>
+          <p>Une communauté grandissante qui suit chaque nouvelle création.</p>
+        </div>
+        <div class="timeline-item reveal d4">
+          <div class="year">2020</div>
+          <h4>Spectacles</h4>
+          <p>Des scènes de plus en plus grandes, au Bénin et ailleurs.</p>
+        </div>
+        <div class="timeline-item reveal d5">
+          <div class="year">2023</div>
+          <h4>Collaborations</h4>
+          <p>Rencontres artistiques et projets communs avec d'autres talents.</p>
+        </div>
+        <div class="timeline-item reveal d6">
+          <div class="year">Aujourd'hui</div>
+          <h4>Une référence</h4>
+          <p>Jojo continue d'écrire, jouer et faire rire, avec la même passion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDÉOS ============ -->
+<section class="section videos" id="videos">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <span class="eyebrow">Vidéos</span>
+      <h2 class="section-title reveal">L'HUMOUR EN <span class="accent">ACTION.</span></h2>
+      <p class="section-lead reveal d1">
+        Sketchs, spectacles, coulisses et interviews — plongez dans
+        l'univers vidéo de Jojo.
+      </p>
+    </div>
+
+    <!-- Vidéo en vedette -->
+    <div class="video-featured" id="videoFeatured">
+      <div class="cover reveal-scale" data-video="mD_bFCvVma8" data-cursor="media" data-cursor-label="PLAY">
+        <img src="https://img.youtube.com/vi/mD_bFCvVma8/maxresdefault.jpg" alt="Vidéo en vedette" loading="lazy" onerror="this.src='https://img.youtube.com/vi/mD_bFCvVma8/hqdefault.jpg'"/>
+        <div class="play-circle" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="info">
+        <span class="category-tag reveal d2">À la une</span>
+        <h3 class="reveal d3">LE SKETCH QUI A TOUT CHANGÉ</h3>
+        <p class="reveal d4">
+          Un moment fort de la carrière de Jojo, à revoir sans modération.
+          Un sketch qui a marqué les esprits et continue de faire rire.
+        </p>
+        <button class="btn btn-ghost reveal d5" data-video="mD_bFCvVma8" data-cursor="hover">
+          <span>Regarder maintenant <span class="arrow">→</span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Filtres -->
+    <div class="videos-filters reveal" role="tablist" aria-label="Filtres vidéos">
+      <button class="filter-btn active" data-filter="all">Toutes</button>
+      <button class="filter-btn" data-filter="sketch">Sketchs</button>
+      <button class="filter-btn" data-filter="show">Spectacles</button>
+      <button class="filter-btn" data-filter="backstage">Coulisses</button>
+      <button class="filter-btn" data-filter="interview">Interviews</button>
+    </div>
+
+    <!-- Grille vidéos -->
+    <div class="videos-grid" id="videosGrid">
+      <article class="video-card reveal d1" data-cat="sketch" data-video="UJl3-VQnQIQ" data-cursor="media" data-cursor-label="PLAY">
+        <div class="thumb">
+          <img src="https://img.youtube.com/vi/UJl3-VQnQIQ/maxresdefault.jpg" alt="Sketch" loading="lazy" onerror="this.src='https://img.youtube.com/vi/UJl3-VQnQIQ/hqdefault.jpg'"/>
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="meta">
+          <span class="cat">Sketch</span>
+          <h4>La scène du quotidien</h4>
+        </div>
+      </article>
+
+      <article class="video-card reveal d2" data-cat="show" data-video="2oy7CJkCISo" data-cursor="media" data-cursor-label="PLAY">
+        <div class="thumb">
+          <img src="https://img.youtube.com/vi/2oy7CJkCISo/maxresdefault.jpg" alt="Spectacle" loading="lazy" onerror="this.src='https://img.youtube.com/vi/2oy7CJkCISo/hqdefault.jpg'"/>
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="meta">
+          <span class="cat">Spectacle</span>
+          <h4>Sur scène à Cotonou</h4>
+        </div>
+      </article>
+
+      <article class="video-card reveal d3" data-cat="backstage" data-video="_Rpv5R5iwPQ" data-cursor="media" data-cursor-label="PLAY">
+        <div class="thumb">
+          <img src="https://img.youtube.com/vi/_Rpv5R5iwPQ/maxresdefault.jpg" alt="Coulisses" loading="lazy" onerror="this.src='https://img.youtube.com/vi/_Rpv5R5iwPQ/hqdefault.jpg'"/>
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="meta">
+          <span class="cat">Coulisses</span>
+          <h4>Dans les préparatifs</h4>
+        </div>
+      </article>
+
+      <article class="video-card reveal d1" data-cat="interview" data-video="IKV_XAK_MDo" data-cursor="media" data-cursor-label="PLAY">
+        <div class="thumb">
+          <img src="https://img.youtube.com/vi/IKV_XAK_MDo/maxresdefault.jpg" alt="Interview" loading="lazy" onerror="this.src='https://img.youtube.com/vi/IKV_XAK_MDo/hqdefault.jpg'"/>
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="meta">
+          <span class="cat">Interview</span>
+          <h4>Face à face</h4>
+        </div>
+      </article>
+
+      <article class="video-card reveal d2" data-cat="sketch" data-video="Ol7hta1qgbs" data-cursor="media" data-cursor-label="PLAY">
+        <div class="thumb">
+          <img src="https://img.youtube.com/vi/Ol7hta1qgbs/maxresdefault.jpg" alt="Sketch" loading="lazy" onerror="this.src='https://img.youtube.com/vi/Ol7hta1qgbs/hqdefault.jpg'"/>
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="meta">
+          <span class="cat">Sketch</span>
+          <h4>Le retour du personnage</h4>
+        </div>
+      </article>
+
+      <article class="video-card reveal d3" data-cat="show" data-video="LtpaVhspZlY" data-cursor="media" data-cursor-label="PLAY">
+        <div class="thumb">
+          <img src="https://img.youtube.com/vi/LtpaVhspZlY/maxresdefault.jpg" alt="Spectacle" loading="lazy" onerror="this.src='https://img.youtube.com/vi/LtpaVhspZlY/hqdefault.jpg'"/>
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="meta">
+          <span class="cat">Spectacle</span>
+          <h4>Une soirée mémorable</h4>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPECTACLES ============ -->
+<section class="section shows" id="spectacles">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <span class="eyebrow">Sur scène</span>
+      <h2 class="section-title reveal">SUR <span class="accent">SCÈNE.</span></h2>
+      <p class="section-lead reveal d1">
+        Retrouvez Jojo en spectacle, en animation ou en événement privé.
+      </p>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown-head">
+      <span class="eyebrow">Prochain grand spectacle</span>
+      <h3 class="reveal">UNE DATE À NE PAS MANQUER</h3>
+    </div>
+    <div class="countdown reveal-scale" id="countdown">
+      <div class="cd-unit">
+        <span class="num" id="cdDays">00</span>
+        <span class="lbl">Jours</span>
+      </div>
+      <div class="cd-unit">
+        <span class="num" id="cdHours">00</span>
+        <span class="lbl">Heures</span>
+      </div>
+      <div class="cd-unit">
+        <span class="num" id="cdMinutes">00</span>
+        <span class="lbl">Minutes</span>
+      </div>
+      <div class="cd-unit">
+        <span class="num" id="cdSeconds">00</span>
+        <span class="lbl">Secondes</span>
+      </div>
+    </div>
+
+    <!-- Liste spectacles -->
+    <div class="shows-list">
+      <article class="show-item reveal">
+        <div class="show-date">12<span>AVRIL</span></div>
+        <div>
+          <span class="show-tag future">À venir</span>
+          <div class="show-name">Jojo en scène — Nouveau spectacle</div>
+        </div>
+        <div class="show-venue"><strong>Lieu</strong>Palais des Congrès</div>
+        <div class="show-city"><strong>Ville</strong>Cotonou, Bénin</div>
+        <button class="btn btn-primary" data-cursor="hover"><span>Réserver</span></button>
+      </article>
+
+      <article class="show-item reveal d1">
+        <div class="show-date">28<span>JUIN</span></div>
+        <div>
+          <span class="show-tag future">À venir</span>
+          <div class="show-name">Jojo — Humour &amp; Vérité</div>
+        </div>
+        <div class="show-venue"><strong>Lieu</strong>Institut Français</div>
+        <div class="show-city"><strong>Ville</strong>Abomey, Bénin</div>
+        <button class="btn btn-primary" data-cursor="hover"><span>Réserver</span></button>
+      </article>
+
+      <article class="show-item reveal d2">
+        <div class="show-date">20<span>DÉC.</span></div>
+        <div>
+          <span class="show-tag past">Passé</span>
+          <div class="show-name">Jojo — L'Année en rire</div>
+        </div>
+        <div class="show-venue"><strong>Lieu</strong>Salle de spectacle</div>
+        <div class="show-city"><strong>Ville</strong>Porto-Novo, Bénin</div>
+        <button class="btn btn-ghost" data-cursor="hover"><span>En savoir plus</span></button>
+      </article>
+
+      <article class="show-item reveal d3">
+        <div class="show-date">05<span>OCT.</span></div>
+        <div>
+          <span class="show-tag past">Passé</span>
+          <div class="show-name">Jojo — Stand-up Cotonou</div>
+        </div>
+        <div class="show-venue"><strong>Lieu</strong>Espace culturel</div>
+        <div class="show-city"><strong>Ville</strong>Cotonou, Bénin</div>
+        <button class="btn btn-ghost" data-cursor="hover"><span>En savoir plus</span></button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERIE ============ -->
+<section class="section gallery" id="galerie">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <span class="eyebrow">Galerie</span>
+      <h2 class="section-title reveal">EN <span class="accent">IMAGES.</span></h2>
+      <p class="section-lead reveal d1">
+        Des instants volés, des émotions capturées, des souvenirs partagés.
+      </p>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item g-a reveal" data-img="a.jpeg" data-cursor="media" data-cursor-label="Voir">
+        <img src="a.jpeg" alt="Jojo Le Comédien" loading="lazy" />
+        <div class="caption">Portrait</div>
+      </div>
+      <div class="gallery-item g-b reveal d1" data-img="b.jpeg" data-cursor="media" data-cursor-label="Voir">
+        <img src="b.jpeg" alt="Jojo sur scène" loading="lazy" />
+        <div class="caption">Sur scène</div>
+      </div>
+      <div class="gallery-item g-c reveal d2" data-img="c.jpeg" data-cursor="media" data-cursor-label="Voir">
+        <img src="c.jpeg" alt="Jojo en spectacle" loading="lazy" />
+        <div class="caption">Spectacle</div>
+      </div>
+      <div class="gallery-item g-d reveal d3" data-img="d.jpeg" data-cursor="media" data-cursor-label="Voir">
+        <img src="d.jpeg" alt="Jojo coulisses" loading="lazy" />
+        <div class="caption">Coulisses</div>
+      </div>
+      <div class="gallery-item g-e reveal d4" data-img="e.jpeg" data-cursor="media" data-cursor-label="Voir">
+        <img src="e.jpeg" alt="Jojo studio" loading="lazy" />
+        <div class="caption">Studio</div>
+      </div>
+      <div class="gallery-item g-f reveal d5" data-img="f.jpeg" data-cursor="media" data-cursor-label="Voir">
+        <img src="f.jpeg" alt="Jojo événement" loading="lazy" />
+        <div class="caption">Événement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTUALITÉS ============ -->
+<section class="section news" id="actualites">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <span class="eyebrow">Actualités</span>
+      <h2 class="section-title reveal">DERNIÈRES <span class="accent">ACTUALITÉS.</span></h2>
+      <p class="section-lead reveal d1">
+        Spectacles, humor, coulisses, collaborations — suivez toute
+        l'actualité de Jojo.
+      </p>
+    </div>
+
+    <div class="news-grid">
+      <article class="news-card featured reveal">
+        <div class="cover">
+          <img src="c.jpeg" alt="Actualité à la une" loading="lazy" />
+        </div>
+        <div class="body">
+          <div class="news-meta">
+            <span class="cat">Spectacles</span>
+            <span class="dot"></span>
+            <span>À la une</span>
+          </div>
+          <h3>UN NOUVEAU SPECTACLE QUI PROMET DE FAIRE DATE</h3>
+          <p>
+            Jojo prépare un tout nouveau spectacle mêlant sketchs inédits,
+            improvisation et moments de vérité. Une création pensée pour
+            surprendre, émouvoir et faire rire aux éclats.
+          </p>
+          <span class="read-more">Lire la suite →</span>
+        </div>
+      </article>
+
+      <article class="news-card reveal d1">
+        <div class="cover">
+          <img src="d.jpeg" alt="Actualité" loading="lazy" />
+        </div>
+        <div class="body">
+          <div class="news-meta">
+            <span class="cat">Coulisses</span>
+            <span class="dot"></span>
+            <span>Tournage</span>
+          </div>
+          <h3>DANS LES COULISSES DU DERNIER TOURNAGE</h3>
+          <p>
+            Retour sur une journée de tournage intense, entre rires,
+            prises multiples et moments de complicité.
+          </p>
+          <span class="read-more">Lire la suite →</span>
+        </div>
+      </article>
+
+      <article class="news-card reveal d2">
+        <div class="cover">
+          <img src="e.jpeg" alt="Actualité" loading="lazy" />
+        </div>
+        <div class="body">
+          <div class="news-meta">
+            <span class="cat">Collaborations</span>
+            <span class="dot"></span>
+            <span>Rencontre</span>
+          </div>
+          <h3>UNE COLLABORATION INATTENDUE AVEC UN GRAND NOM</h3>
+          <p>
+            Jojo s'associe à un autre talent pour un projet qui promet
+            de marquer les esprits. Détails à venir.
+          </p>
+          <span class="read-more">Lire la suite →</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="news-cta">
+      <a href="#" class="btn btn-ghost" data-cursor="hover">
+        <span>Voir toutes les actualités <span class="arrow">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COLLABORATIONS ============ -->
+<section class="brands" id="collaborations">
+  <div class="container">
+    <div class="brands-head">
+      <span class="eyebrow" style="justify-content:center">Ils m'ont fait confiance</span>
+      <h3 class="reveal">MARQUES · MÉDIAS · PRODUCTIONS · ÉVÉNEMENTS</h3>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">PRODUCTION</span>
+      <span class="marquee-item">MÉDIA TV</span>
+      <span class="marquee-item">FESTIVAL</span>
+      <span class="marquee-item">BRAND</span>
+      <span class="marquee-item">ÉVÉNEMENT</span>
+      <span class="marquee-item">RADIO</span>
+      <span class="marquee-item">COLLECTIF</span>
+      <span class="marquee-item">SPECTACLE</span>
+      <span class="marquee-item">PRODUCTION</span>
+      <span class="marquee-item">MÉDIA TV</span>
+      <span class="marquee-item">FESTIVAL</span>
+      <span class="marquee-item">BRAND</span>
+      <span class="marquee-item">ÉVÉNEMENT</span>
+      <span class="marquee-item">RADIO</span>
+      <span class="marquee-item">COLLECTIF</span>
+      <span class="marquee-item">SPECTACLE</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RÉSEAUX SOCIAUX ============ -->
+<section class="section social" id="reseaux">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <span class="eyebrow">Réseaux sociaux</span>
+      <h2 class="section-title reveal">RETROUVEZ <span class="accent">JOJO.</span></h2>
+      <p class="section-lead reveal d1">
+        Suivez Jojo sur ses différentes plateformes pour ne rien manquer.
+      </p>
+    </div>
+
+    <div class="social-grid">
+      <a href="#" class="social-card reveal d1" data-social="instagram" data-cursor="link">
+        <div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.6A6.2 6.2 0 1 0 18.2 12 6.2 6.2 0 0 0 12 5.8zm0 10.2A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.4-10.4a1.4 1.4 0 1 1-1.4-1.4 1.4 1.4 0 0 1 1.4 1.4z"/></svg>
+          </div>
+          <h4>Instagram</h4>
+          <p>Photos, stories et coulisses au quotidien.</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+
+      <a href="#" class="social-card reveal d2" data-social="tiktok" data-cursor="link">
+        <div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M19.6 6.7a5.3 5.3 0 0 1-3.1-3.1 5.4 5.4 0 0 1-.2-1.1h-3.4v13.7a2.6 2.6 0 1 1-1.9-2.5V10a6 6 0 1 0 5.3 5.9V9.9a8.5 8.5 0 0 0 4.5 1.3V7.8a5.4 5.4 0 0 1-1.2-.1z"/></svg>
+          </div>
+          <h4>TikTok</h4>
+          <p>Sketchs courts et moments hilarants.</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+
+      <a href="#" class="social-card reveal d3" data-social="youtube" data-cursor="link">
+        <div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M23 12s0-3.3-.4-4.9a3.1 3.1 0 0 0-2.2-2.2C18.8 4.5 12 4.5 12 4.5s-6.8 0-8.4.4a3.1 3.1 0 0 0-2.2 2.2C1 8.7 1 12 1 12s0 3.3.4 4.9a3.1 3.1 0 0 0 2.2 2.2c1.6.4 8.4.4 8.4.4s6.8 0 8.4-.4a3.1 3.1 0 0 0 2.2-2.2C23 15.3 23 12 23 12zM10 15.5v-7l6 3.5z"/></svg>
+          </div>
+          <h4>YouTube</h4>
+          <p>Vidéos longues, spectacles et interviews.</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+
+      <a href="#" class="social-card reveal d4" data-social="facebook" data-cursor="link">
+        <div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>
+          </div>
+          <h4>Facebook</h4>
+          <p>Communauté, événements et actualités.</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section class="booking" id="booking">
+  <div class="container">
+    <div class="booking-grid">
+      <div>
+        <span class="eyebrow">Booking</span>
+        <h2 class="booking-title reveal">
+          VOUS VOULEZ <span class="accent">JOJO</span><br>À VOTRE ÉVÉNEMENT ?
+        </h2>
+
+        <div class="booking-services reveal d1">
+          <span>Spectacle</span>
+          <span>Animation</span>
+          <span>Événement privé</span>
+          <span>Collaboration</span>
+          <span>Publicité</span>
+          <span>Campagne digitale</span>
+          <span>Production audiovisuelle</span>
+        </div>
+
+        <p class="reveal d2" style="color:rgba(245,245,240,.7); max-width:520px;">
+          Mariage, entreprise, festival, émission, campagne — Jojo s'adapte
+          à votre projet pour créer un moment unique et mémorable.
+        </p>
+
+        <div class="booking-info reveal d3">
+          <div class="row">
+            <strong>Email</strong>
+            <span>contact@jojolecomedien.bj</span>
+          </div>
+          <div class="row">
+            <strong>Téléphone</strong>
+            <span>+229 00 00 00 00</span>
+          </div>
+          <div class="row">
+            <strong>Localisation</strong>
+            <span>Abomey, Bénin</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="booking-form reveal d2" id="bookingForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="nom">Nom <span class="req">*</span></label>
+            <input type="text" id="nom" name="nom" required />
+            <span class="err-msg">Veuillez renseigner votre nom.</span>
+          </div>
+          <div class="field">
+            <label for="organisation">Entreprise / Organisation</label>
+            <input type="text" id="organisation" name="organisation" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required />
+            <span class="err-msg">Veuillez entrer un email valide.</span>
+          </div>
+          <div class="field">
+            <label for="telephone">Téléphone <span class="req">*</span></label>
+            <input type="tel" id="telephone" name="telephone" required />
+            <span class="err-msg">Veuillez renseigner votre téléphone.</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="type">Type de demande <span class="req">*</span></label>
+            <select id="type" name="type" required>
+              <option value="">— Choisir —</option>
+              <option>Spectacle</option>
+              <option>Animation</option>
+              <option>Événement privé</option>
+              <option>Collaboration</option>
+              <option>Publicité</option>
+              <option>Campagne digitale</option>
+              <option>Production audiovisuelle</option>
+            </select>
+            <span class="err-msg">Veuillez choisir un type de demande.</span>
+          </div>
+          <div class="field">
+            <label for="date">Date souhaitée</label>
+            <input type="date" id="date" name="date" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="message">Message <span class="req">*</span></label>
+          <textarea id="message" name="message" rows="4" required placeholder="Décrivez votre projet..."></textarea>
+          <span class="err-msg">Veuillez écrire un message.</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" data-cursor="hover">
+          <span>Envoyer la demande <span class="arrow">→</span></span>
+        </button>
+
+        <div class="form-success" id="formSuccess">
+          ✓ Merci ! Votre demande a bien été envoyée. Jojo vous répondra très vite.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">07</span>
+      <span class="eyebrow">Contact</span>
+      <h2 class="section-title reveal">RESTONS EN <span class="accent">CONTACT.</span></h2>
+    </div>
+
+    <div class="contact-grid">
+      <a href="mailto:contact@jojolecomedien.bj" class="contact-item reveal d1" data-cursor="link">
+        <span class="label">Email</span>
+        <span class="value">contact@jojolecomedien.bj</span>
+        <span class="sub">Réponse sous 48h</span>
+      </a>
+
+      <a href="tel:+22900000000" class="contact-item reveal d2" data-cursor="link">
+        <span class="label">Téléphone</span>
+        <span class="value">+229 00 00 00 00</span>
+        <span class="sub">Du lundi au samedi</span>
+      </a>
+
+      <a href="#reseaux" class="contact-item reveal d3" data-cursor="link">
+        <span class="label">Réseaux sociaux</span>
+        <span class="value">@jojolecomedien</span>
+        <span class="sub">Instagram · TikTok · YouTube</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-bg" aria-hidden="true">JOJO</div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#accueil" class="logo" aria-label="Jojo Le Comédien">
+          <span class="logo-main"><span>J</span><span>O</span><span>J</span><span>O</span></span>
+          <span class="logo-sub">LE COMÉDIEN</span>
+        </a>
+        <p>
+          Humoriste • Comédien • Vidéaste • Créateur de contenus.
+          Une voix qui fait rire, rassembler et réfléchir.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="#accueil">Accueil</a>
+        <a href="#apropos">À propos</a>
+        <a href="#videos">Vidéos</a>
+        <a href="#spectacles">Spectacles</a>
+        <a href="#galerie">Galerie</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Plus</h5>
+        <a href="#actualites">Actualités</a>
+        <a href="#collaborations">Collaborations</a>
+        <a href="#booking">Booking</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Suivez-moi</h5>
+        <a href="#" data-social="instagram">Instagram</a>
+        <a href="#" data-social="tiktok">TikTok</a>
+        <a href="#" data-social="youtube">YouTube</a>
+        <a href="#" data-social="facebook">Facebook</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Jojo Le Comédien. Tous droits réservés.</span>
+      <span class="design">Site conçu par <a href="#" data-cursor="link">NOVASAVOIR</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ WHATSAPP FLOAT ============ -->
+<a class="whatsapp-float" id="whatsappBtn" href="#" aria-label="Contacter Jojo sur WhatsApp" data-cursor="link">
+  <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .1 5.4.1 12c0 2.1.6 4.2 1.6 6L0 24l6.3-1.7a12 12 0 0 0 5.7 1.4h.1c6.6 0 11.9-5.4 11.9-12 0-3.2-1.2-6.2-3.5-8.2zM12 21.8h-.1a10 10 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a10 10 0 0 1-1.5-5.2c0-5.5 4.5-9.9 10-9.9 2.7 0 5.2 1 7.1 2.9a9.9 9.9 0 0 1 2.9 7c0 5.5-4.5 9.9-10 9.9zm5.5-7.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.6.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5 0-.1-.2-.2-.4-.4z"/></svg>
+  <span class="tooltip">Écrivez-moi sur WhatsApp</span>
+</a>
+
+<!-- ============ TO TOP ============ -->
+<button class="to-top" id="toTop" aria-label="Retour en haut">↑</button>
+
+<!-- ============ VIDEO MODAL ============ -->
+<div class="modal" id="videoModal" aria-hidden="true" role="dialog">
+  <div class="modal-inner">
+    <button class="modal-close" id="modalClose" aria-label="Fermer">✕</button>
+    <div id="videoHolder"></div>
+  </div>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Fermer">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Précédent">‹</button>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Suivant">›</button>
+  <img src="" alt="Image galerie" id="lbImg" />
+  <div class="lb-counter" id="lbCounter">1 / 6</div>
+</div>
+
+<!-- ============ JSON-LD ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jojo Le Comédien",
+  "alternateName": "Jojo",
+  "jobTitle": "Humoriste, Comédien, Vidéaste, Créateur de contenus",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Abomey",
+    "addressCountry": "BJ"
+  },
+  "description": "Humoriste, comédien, vidéaste et créateur de contenus béninois."
+}
+</script>
+
+<!-- ============================================================
+     SCRIPT
+     ============================================================ -->
+<script>
+/* ==============================
+   CONFIGURATION DU SITE
+   ============================== */
+const SITE_CONFIG = {
+  name: "Jojo Le Comédien",
+  email: "contact@jojolecomedien.bj",
+  phone: "+22900000000",
+  whatsapp: "+22900000000", // format international sans +
+  instagram: "",
+  tiktok: "",
+  youtube: "",
+  facebook: ""
+};
+
+(function(){
+  'use strict';
+
+  /* ============================================================
+     HELPERS
+     ============================================================ */
+  const $  = (sel, ctx=document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ============================================================
+     1. PRELOADER
+     ============================================================ */
+  function initPreloader(){
+    const preloader = $('#preloader');
+    const bar = $('#preloaderBar');
+    const count = $('#preloaderCount');
+    if (!preloader || !bar || !count) return;
+
+    let progress = 0;
+    document.body.classList.add('no-scroll');
+
+    const timer = setInterval(() => {
+      progress += Math.random() * 12 + 4;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(timer);
+        bar.style.width = '100%';
+        count.textContent = '100';
+        setTimeout(() => {
+          preloader.classList.add('done');
+          document.body.classList.remove('no-scroll');
+          document.body.classList.add('hero-ready');
+          initHeroAnimations();
+          // Retire le preloader du DOM après transition
+          setTimeout(() => { preloader.style.display = 'none'; }, 900);
+        }, 500);
+      } else {
+        bar.style.width = progress + '%';
+        count.textContent = String(Math.floor(progress)).padStart(2, '0');
+      }
+    }, 130);
+  }
+
+  /* ============================================================
+     2. CUSTOM CURSOR
+     ============================================================ */
+  function initCursor(){
+    if (window.matchMedia('(hover:none), (pointer:coarse)').matches) return;
+    const dot = $('#cursorDot');
+    const ring = $('#cursorRing');
+    const label = $('#cursorLabel');
+    if (!dot || !ring) return;
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX, ringY = mouseY;
+    let raf;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%,-50%)`;
+    });
+
+    // Ring suit avec un léger retard
+    function animateRing(){
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%,-50%)`;
+      raf = requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Hover states
+    const hoverTargets = document.querySelectorAll('[data-cursor]');
+    hoverTargets.forEach(el => {
+      const type = el.getAttribute('data-cursor');
+      const customLabel = el.getAttribute('data-cursor-label');
+      el.addEventListener('mouseenter', () => {
+        document.body.classList.remove('cursor-hover','cursor-link','cursor-media');
+        if (type === 'media') {
+          document.body.classList.add('cursor-media');
+          if (customLabel) label.textContent = customLabel;
+        } else if (type === 'link') {
+          document.body.classList.add('cursor-link');
+        } else {
+          document.body.classList.add('cursor-hover');
+          if (customLabel) label.textContent = customLabel;
+          else label.textContent = 'Voir';
+        }
+      });
+      el.addEventListener('mouseleave', () => {
+        document.body.classList.remove('cursor-hover','cursor-link','cursor-media');
+      });
+    });
+
+    // Curseur disparaît si la fenêtre perd le focus
+    document.addEventListener('mouseleave', () => {
+      dot.style.opacity = 0;
+      ring.style.opacity = 0;
+    });
+    document.addEventListener('mouseenter', () => {
+      dot.style.opacity = 1;
+      ring.style.opacity = 1;
+    });
+  }
+
+  /* ============================================================
+     3. NAVIGATION (header + mobile menu)
+     ============================================================ */
+  function initNavigation(){
+    const header = $('#header');
+    const burger = $('#burger');
+    const mobileMenu = $('#mobileMenu');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    }, { passive: true });
+
+    // Burger
+    if (burger && mobileMenu) {
+      burger.addEventListener('click', () => {
+        const open = burger.classList.toggle('open');
+        mobileMenu.classList.toggle('open', open);
+        burger.setAttribute('aria-expanded', open);
+        document.body.classList.toggle('menu-open', open);
+      });
+
+      // Fermer au clic sur un lien
+      $$('#mobileMenu a').forEach(a => {
+        a.addEventListener('click', () => {
+          burger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          document.body.classList.remove('menu-open');
+          burger.setAttribute('aria-expanded', false);
+        });
+      });
+    }
+
+    // Smooth scroll pour les ancres
+    $$('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (href === '#' || href.length < 2) return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const offset = 70;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  }
+
+  /* ============================================================
+     4. HERO ANIMATIONS (déclenché après preloader)
+     ============================================================ */
+  function initHeroAnimations(){
+    // Ajout d'une petite parallaxe souris sur la visuelle hero
+    const heroVisual = $('#heroVisual');
+    if (!heroVisual || prefersReduced) return;
+
+    const hero = $('.hero');
+    hero.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 18;
+      const y = (e.clientY / window.innerHeight - 0.5) * 18;
+      heroVisual.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    hero.addEventListener('mouseleave', () => {
+      heroVisual.style.transform = 'translate(0,0)';
+    });
+  }
+
+  /* ============================================================
+     5. SCROLL ANIMATIONS (IntersectionObserver)
+     ============================================================ */
+  function initScrollAnimations(){
+    const els = $$('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-clip');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(el => el.classList.add('in'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    els.forEach(el => io.observe(el));
+
+    // Compteurs animés
+    const counters = $$('[data-count]');
+    const io2 = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-count'), 10);
+          const suffix = el.getAttribute('data-suffix') || '';
+          let current = 0;
+          const duration = 1600;
+          const start = performance.now();
+          function tick(now){
+            const t = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            current = Math.floor(eased * target);
+            el.textContent = current + suffix;
+            if (t < 1) requestAnimationFrame(tick);
+            else el.textContent = target + suffix;
+          }
+          requestAnimationFrame(tick);
+          io2.unobserve(el);
+        }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(c => io2.observe(c));
+  }
+
+  /* ============================================================
+     6. PARALLAX (léger, GPU-friendly)
+     ============================================================ */
+  function initParallax(){
+    if (prefersReduced) return;
+    const bgText = $('#heroBgText');
+    const bgTexts = $$('.footer-bg');
+    let ticking = false;
+    function update(){
+      const y = window.pageYOffset;
+      if (bgText) bgText.style.transform = `translate(-50%, calc(-50% + ${y * 0.15}px))`;
+      bgTexts.forEach(t => {
+        t.style.transform = `translateX(-50%) translateY(${y * 0.02}px)`;
+      });
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking){
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  /* ============================================================
+     7. VIDEO MODAL
+     ============================================================ */
+  function initVideoModal(){
+    const modal = $('#videoModal');
+    const holder = $('#videoHolder');
+    const closeBtn = $('#modalClose');
+    if (!modal || !holder) return;
+
+    function open(videoId){
+      holder.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Vidéo Jojo"></iframe>`;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      document.body.classList.add('no-scroll');
+    }
+    function close(){
+      holder.innerHTML = '';
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      document.body.classList.remove('no-scroll');
+    }
+
+    $$('[data-video]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = el.getAttribute('data-video');
+        if (id) open(id);
+      });
+    });
+
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) close();
+    });
+  }
+
+  /* ============================================================
+     8. VIDEO FILTERS
+     ============================================================ */
+  function initFilters(){
+    const buttons = $$('.filter-btn');
+    const cards = $$('.video-card');
+    if (!buttons.length) return;
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+
+        cards.forEach(card => {
+          const cat = card.getAttribute('data-cat');
+          if (filter === 'all' || cat === filter) {
+            card.classList.remove('hidden');
+            card.style.display = '';
+            // petite animation
+            card.style.opacity = '0';
+            requestAnimationFrame(() => {
+              card.style.transition = 'opacity .5s var(--ease), transform .5s var(--ease)';
+              card.style.opacity = '1';
+            });
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  }
+
+  /* ============================================================
+     9. COUNTDOWN
+     ============================================================ */
+  function initCountdown(){
+    const elDays = $('#cdDays');
+    const elHours = $('#cdHours');
+    const elMinutes = $('#cdMinutes');
+    const elSeconds = $('#cdSeconds');
+    if (!elDays) return;
+
+    // Date cible : 30 jours à partir de maintenant (à modifier par la vraie date)
+    const target = new Date();
+    target.setDate(target.getDate() + 30);
+    target.setHours(20, 0, 0, 0);
+
+    function update(){
+      const now = Date.now();
+      let diff = Math.max(0, target.getTime() - now);
+      const d = Math.floor(diff / 86400000);
+      diff -= d * 86400000;
+      const h = Math.floor(diff / 3600000);
+      diff -= h * 3600000;
+      const m = Math.floor(diff / 60000);
+      diff -= m * 60000;
+      const s = Math.floor(diff / 1000);
+
+      elDays.textContent = String(d).padStart(2,'0');
+      elHours.textContent = String(h).padStart(2,'0');
+      elMinutes.textContent = String(m).padStart(2,'0');
+      elSeconds.textContent = String(s).padStart(2,'0');
+    }
+    update();
+    setInterval(update, 1000);
+  }
+
+  /* ============================================================
+     10. GALLERY LIGHTBOX
+     ============================================================ */
+  function initGallery(){
+    const items = $$('.gallery-item');
+    const lb = $('#lightbox');
+    const lbImg = $('#lbImg');
+    const lbCounter = $('#lbCounter');
+    const closeBtn = $('#lbClose');
+    const prevBtn = $('#lbPrev');
+    const nextBtn = $('#lbNext');
+    if (!items.length || !lb) return;
+
+    const images = items.map(it => ({
+      src: it.getAttribute('data-img'),
+      alt: it.querySelector('img')?.alt || ''
+    }));
+    let current = 0;
+
+    function show(index){
+      current = (index + images.length) % images.length;
+      lbImg.src = images[current].src;
+      lbImg.alt = images[current].alt;
+      lbCounter.textContent = `${current + 1} / ${images.length}`;
+    }
+    function open(index){
+      show(index);
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden','false');
+      document.body.classList.add('no-scroll');
+    }
+    function close(){
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden','true');
+      document.body.classList.remove('no-scroll');
+    }
+
+    items.forEach((it, i) => {
+      it.addEventListener('click', () => open(i));
+    });
+    closeBtn.addEventListener('click', close);
+    prevBtn.addEventListener('click', () => show(current - 1));
+    nextBtn.addEventListener('click', () => show(current + 1));
+
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb) close();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(current - 1);
+      else if (e.key === 'ArrowRight') show(current + 1);
+    });
+
+    // Swipe mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    lb.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    lb.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const delta = touchEndX - touchStartX;
+      if (Math.abs(delta) > 50) {
+        if (delta > 0) show(current - 1);
+        else show(current + 1);
+      }
+    }, { passive: true });
+  }
+
+  /* ============================================================
+     11. FORM VALIDATION
+     ============================================================ */
+  function initContactForm(){
+    const form = $('#bookingForm');
+    if (!form) return;
+    const success = $('#formSuccess');
+
+    const fields = [
+      { el: $('#nom'),      validate: v => v.trim().length >= 2 },
+      { el: $('#email'),    validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+      { el: $('#telephone'),validate: v => v.trim().length >= 6 },
+      { el: $('#type'),     validate: v => v.trim() !== '' },
+      { el: $('#message'),  validate: v => v.trim().length >= 5 }
+    ];
+
+    // Nettoyage erreurs à la saisie
+    fields.forEach(f => {
+      if (!f.el) return;
+      f.el.addEventListener('input', () => {
+        if (f.validate(f.el.value)) {
+          f.el.closest('.field').classList.remove('error');
+        }
+      });
+      f.el.addEventListener('change', () => {
+        if (f.validate(f.el.value)) {
+          f.el.closest('.field').classList.remove('error');
+        }
+      });
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let ok = true;
+
+      fields.forEach(f => {
+        if (!f.el) return;
+        const field = f.el.closest('.field');
+        if (!f.validate(f.el.value)) {
+          field.classList.add('error');
+          ok = false;
+        } else {
+          field.classList.remove('error');
+        }
+      });
+
+      if (!ok) {
+        // Scroll vers le premier champ en erreur
+        const firstError = form.querySelector('.field.error');
+        if (firstError) {
+          const top = firstError.getBoundingClientRect().top + window.pageYOffset - 120;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+        return;
+      }
+
+      // Simulation d'envoi
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalHtml = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<span>Envoi en cours...</span>';
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        submitBtn.innerHTML = originalHtml;
+        submitBtn.disabled = false;
+        form.reset();
+        success.classList.add('show');
+        setTimeout(() => success.classList.remove('show'), 6000);
+      }, 1200);
+    });
+  }
+
+  /* ============================================================
+     12. SOCIAL LINKS + WHATSAPP
+     ============================================================ */
+  function initSocialLinks(){
+    // WhatsApp
+    const wa = $('#whatsappBtn');
+    if (wa && SITE_CONFIG.whatsapp) {
+      wa.href = `https://wa.me/${SITE_CONFIG.whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent("Bonjour Jojo, je vous contacte via votre site officiel.")}`;
+    }
+
+    // Réseaux sociaux
+    $$('[data-social]').forEach(el => {
+      const key = el.getAttribute('data-social');
+      const url = SITE_CONFIG[key];
+      if (url) {
+        el.href = url;
+        el.target = '_blank';
+        el.rel = 'noopener';
+      } else {
+        // Fallback placeholder
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+        });
+      }
+    });
+  }
+
+  /* ============================================================
+     13. TO TOP
+     ============================================================ */
+  function initToTop(){
+    const btn = $('#toTop');
+    if (!btn) return;
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('show', window.scrollY > 600);
+    }, { passive: true });
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ============================================================
+     INIT GLOBAL
+     ============================================================ */
+  function init(){
+    initPreloader();
+    initCursor();
+    initNavigation();
+    initScrollAnimations();
+    initParallax();
+    initVideoModal();
+    initFilters();
+    initCountdown();
+    initGallery();
+    initContactForm();
+    initSocialLinks();
+    initToTop();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
+</script>
+</body>
+</html>
